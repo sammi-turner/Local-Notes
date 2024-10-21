@@ -10,6 +10,15 @@ https://github.com/user-attachments/assets/133a4b02-04bc-4423-b4e6-8cf01f01e3cb
 
 <br>
 
+## Requirements
+
+```
+node
+npm
+```
+
+<br>
+
 ## Install node modules
 
 ```
