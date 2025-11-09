@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Notes</title>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" x-data="noteApp()">
+        <h1>Local Notes</h1>
+        
+        <!-- Add new note -->
+        <form @submit.prevent="addNote" class="input-group">
+            <input 
+                type="text" 
+                x-model="newNote" 
+                placeholder="Add notes here..."
+                @keyup.enter="addNote"
+            >
+            <button type="submit">Add Note</button>
+        </form>
+        
+        <!-- Filters -->
+        <div class="filters">
+            <button 
+                class="filter-btn" 
+                :class="{ 'active': filter === 'all' }"
+                @click="filter = 'all'"
+            >All</button>
+            <button 
+                class="filter-btn" 
+                :class="{ 'active': filter === 'active' }"
+                @click="filter = 'active'"
+            >Active</button>
+            <button 
+                class="filter-btn" 
+                :class="{ 'active': filter === 'completed' }"
+                @click="filter = 'completed'"
+            >Completed</button>
+        </div>
+        
+        <!-- Note list -->
+        <template x-if="filteredNotes.length === 0">
+            <div class="empty-state">
+                <p x-text="filter === 'all' ? 'No notes yet. Add one above.' : 
+                           filter === 'active' ? 'No active notes.' : 
+                           'No completed notes.'"></p>
+            </div>
+        </template>
+        
+        <ul>
+            <template x-for="(note, index) in filteredNotes" :key="note.id">
+                <li :class="{ 'completed': note.completed }">
+                    <div class="checkbox-wrapper">
+                        <input 
+                            type="checkbox" 
+                            x-model="note.completed"
+                            :id="'note-' + note.id"
+                        >
+                        <label :for="'note-' + note.id" class="note-text" x-text="note.text"></label>
+                    </div>
+                    <button 
+                        class="delete-btn" 
+                        @click="deleteNote(index)"
+                    >Delete</button>
+                </li>
+            </template>
+        </ul>
+        
+        <!-- Stats and actions -->
+        <div class="stats" x-show="notes.length > 0">
+            <p>
+                <span x-text="activeNotes.length"></span> of 
+                <span x-text="notes.length"></span> items left
+            </p>
+            <button 
+                class="clear-completed" 
+                x-show="completedNotes.length > 0"
+                @click="clearCompleted"
+            >Clear Completed</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
