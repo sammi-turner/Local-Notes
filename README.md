@@ -21,7 +21,7 @@ A minimal, fast, and privacy-first note-taking app that runs entirely in your br
 - **Filter** by All, Active, or Completed  
 - **Persistent** – everything is auto-saved to `localStorage`  
 - **Responsive** – works great on desktop and mobile  
-- **One dependencies** - via the AlpineJS CDN
+- **One dependency** - via the AlpineJS CDN
 
 <br>
 
@@ -35,6 +35,8 @@ A minimal, fast, and privacy-first note-taking app that runs entirely in your br
    ```
 
 2. Open `index.html` in any modern browser – that’s it!
+
+<br>
 
 No build step, no server, no API keys.
 
