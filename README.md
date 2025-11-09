@@ -29,10 +29,9 @@ A minimal, fast, and privacy-first note-taking app that runs entirely in your br
 
 <br>
 
-1. Clone or download this repo  
+1. Clone or download this repo
    ```bash
-   git clone https://github.com/your-username/local-notes.git
-   cd local-notes
+   git clone https://github.com/sammi-turner/Local-Notes
    ```
 
 2. Open `index.html` in any modern browser – that’s it!
